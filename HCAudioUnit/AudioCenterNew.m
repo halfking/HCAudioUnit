@@ -405,7 +405,7 @@ dispatch_queue_t getAudioQueueNew()
     recordFilePath_ = [recordFilePath_ stringByAppendingPathComponent:@"recordfiles"]
     ;
     
-    if(![CommonUtil createFileDirectories:recordFilePath_])
+    if(![HCFileManager createFileDirectories:recordFilePath_])
     {
         NSLog(@"cannot create directory:%@",recordFilePath_);
     }

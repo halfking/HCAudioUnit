@@ -345,7 +345,7 @@ static void AEFileRenderNotifyCompletion(void *userInfo, int userInfoLength) {
 - (BOOL)loadAudioFileWithURL:(NSURL*)url error:(NSError**)error {
     if(!sourceUrls_) sourceUrls_ =[NSMutableArray new];
     else [sourceUrls_ removeAllObjects];
-    [sourceUrls_ addObject:[CommonUtil checkPath:[url absoluteString]]];
+    [sourceUrls_ addObject:[HCFileManager checkPath:[url absoluteString]]];
     [self loadFiles];
     
     _lengthInFrames = (UInt32)mUserData.maxNumFrames;
