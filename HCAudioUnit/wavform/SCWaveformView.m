@@ -25,7 +25,7 @@
     CGFloat hightLightLeft_;
     CGFloat hightLightRight_;
     
-    //for hightligh mode
+    //for hightligh mode sadfkajsd
     UIView * _cropProgressViewRight;
     UIImageView * _progressImageView2;
     BOOL _progressColorRightDirty;

@@ -18,6 +18,7 @@
 - (void)WaveView:(HCWaveView *)waveView reachEnd:(CGFloat)seconds;
 @end
 
+
 @interface HCWaveView : UIView
 {
     NSMutableArray * audioList_;    //当前音频文件列表。指已经录好的音频文件
