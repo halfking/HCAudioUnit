@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HCAudioUnit"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "这是一个与声音相关核心库。"
   s.description  = <<-DESC
 这是一个特定的核心库。包含了常用录音、及声音滤镜相关的功能。
@@ -53,75 +53,78 @@ s.pod_target_xcconfig = { 'LIBRARY_SEARCH_PATHS' => "$(inherited) /Users/huangxu
 
 s.dependency "HCMinizip", "~> 1.2.6"
 s.dependency "hccoren", "~> 0.1.5"
+
 s.subspec 'lame' do |spec|
     spec.source_files = ['Lib/*.h']
     spec.public_header_files = ['Lib/*.h']
     spec.preserve_paths = 'Lib/*.h'
-    spec.vendored_libraries = 'Lib/libmp3lame.a1', 'Lib/libopencore-amrnb.a1','Lib/libopencore-amrwb.a1'
+    spec.vendored_libraries = 'Lib/libmp3lame.a', 'Lib/libopencore-amrnb.a','Lib/libopencore-amrwb.a'
     spec.libraries = 'mp3lame', 'opencore-amrnb','opencore-amrwb'
     spec.xcconfig = { 'HEADER_SEARCH_PATHS' => "$(inherited) ${PODS_ROOT}/#{s.name}/Lib/**" }
 
 end
-#s.subspec 'Amazing' do |spec|
-#        spec.requires_arc            = true
-#        spec.source_files = [
-#            "HCAudioUnit/TheAmazingAudioEngine/**/*.{h,m,mm,c,cpp}",
-#            "HCAudioUnit/AudioConvert/**/*.{h,m,mm,c,cpp}"
-#        ]
-#        spec.public_header_files = [
-#            "HCAudioUnit/TheAmazingAudioEngine/**/*.h",
-#            "HCAudioUnit/AudioConvert/**/*.h"
-#        ]
-#        #spec.exclude_files = []
-#        spec.libraries = [
-#            'icucore',
-#            'iconv',
-#            'stdc++',
-#            'stdc++.6',
-#        ]
-#        spec.frameworks = [
-#            'UIKit',
-#            'CoreLocation',
-#            'QuartzCore',
-#            'OpenGLES',
-#            'SystemConfiguration',
-#            'CoreGraphics',
-#            'Security',
-#            'IOKit'
-#        ]
-#        spec.ios.dependency 'HCAudioUnit/lame'
+s.subspec 'Amazing' do |spec|
+        spec.requires_arc            = true
+        spec.source_files = [
+            "HCAudioUnit/TheAmazingAudioEngine/**/*.{h,m,mm,c,cpp}",
+            "HCAudioUnit/AudioConvert/**/*.{h,m,mm,c,cpp}"
+        ]
+        spec.public_header_files = [
+            "HCAudioUnit/TheAmazingAudioEngine/**/*.h",
+            "HCAudioUnit/AudioConvert/**/*.h"
+        ]
+        #spec.exclude_files = []
+        spec.libraries = [
+            'icucore',
+            'iconv',
+            'stdc++',
+            'stdc++.6',
+        ]
+        spec.frameworks = [
+            'UIKit',
+            'CoreLocation',
+            'QuartzCore',
+            'OpenGLES',
+            'SystemConfiguration',
+            'CoreGraphics',
+            'Security',
+            'IOKit'
+        ]
+        spec.ios.dependency 'HCAudioUnit/lame'
 
-#    end
-#    s.subspec 'EZAudioDevice' do |spec|
-#        spec.requires_arc            = false
-#        spec.source_files = [
-#            "HCAudioUnit/EZAudio/EZAudioUtilities.{h,m,mm,c,cpp}",
-#            "HCAudioUnit/EZAudio/EZAudioDevice.{h,m,mm,c,cpp}"
-#        ]
-#        spec.public_header_files = [
-#            "HCAudioUnit/EZAudio/EZAudioUtilities.h",
-#            "HCAudioUnit/EZAudio/EZAudioDevice.h"
-#        ]
-#        #spec.exclude_files = []
-#        spec.ios.dependency 'HCAudioUnit/Amazing'
-#    end
-#    s.subspec 'Core' do |spec|
-#        spec.requires_arc            = true
-#        spec.source_files = [
-#            "HCAudioUnit/**/*.{h,m,mm,c,cpp}"
-#        ]
-#        spec.public_header_files = [
-#            "HCAudioUnit/**/*.h",
-#            "HCAudioUnit/**/HCAudioUnit.h"
-#        ]
-#        spec.exclude_files = [
-#            "HCAudioUnit/TheAmazingAudioEngine/**/*.{h,m,mm,c,cpp}",
-#            "HCAudioUnit/AudioConvert/**/*.{h,m,mm,c,cpp}",
-#            "HCAudioUnit/EZAudio/EZAudioUtilities.{h,m,mm,c,cpp}",
-#            "HCAudioUnit/EZAudio/EZAudioDevice.{h,m,mm,c,cpp}",
-#            "HCAudioUnit/**/HCAudioUnit.h"
-#        ]
-#        spec.ios.dependency 'HCAudioUnit/Amazing'
-#        spec.ios.dependency 'HCAudioUnit/EZAudioDevice'
-#    end
+    end
+    s.subspec 'EZAudioDevice' do |spec|
+        spec.requires_arc            = false
+        spec.source_files = [
+            "HCAudioUnit/EZAudio/EZAudioUtilities.{h,m,mm,c,cpp}",
+            "HCAudioUnit/EZAudio/EZAudioDevice.{h,m,mm,c,cpp}"
+        ]
+        spec.public_header_files = [
+            "HCAudioUnit/EZAudio/EZAudioUtilities.h",
+            "HCAudioUnit/EZAudio/EZAudioDevice.h"
+        ]
+        #spec.exclude_files = []
+        spec.ios.dependency 'HCAudioUnit/lame'
+        spec.ios.dependency 'HCAudioUnit/Amazing'
+    end
+    s.subspec 'Core' do |spec|
+        spec.requires_arc            = true
+        spec.source_files = [
+            "HCAudioUnit/**/*.{h,m,mm,c,cpp}"
+        ]
+        spec.public_header_files = [
+            "HCAudioUnit/**/*.h",
+            "HCAudioUnit/**/HCAudioUnit.h"
+        ]
+        spec.exclude_files = [
+            "HCAudioUnit/TheAmazingAudioEngine/**/*.{h,m,mm,c,cpp}",
+            "HCAudioUnit/AudioConvert/**/*.{h,m,mm,c,cpp}",
+            "HCAudioUnit/EZAudio/EZAudioUtilities.{h,m,mm,c,cpp}",
+            "HCAudioUnit/EZAudio/EZAudioDevice.{h,m,mm,c,cpp}",
+            "HCAudioUnit/**/HCAudioUnit.h"
+        ]
+        spec.ios.dependency 'HCAudioUnit/lame'
+        spec.ios.dependency 'HCAudioUnit/Amazing'
+        spec.ios.dependency 'HCAudioUnit/EZAudioDevice'
+    end
 end

@@ -243,6 +243,8 @@
 		114DE8B31CCA294D004BE152 /* AudioItemN.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE8B11CCA294D004BE152 /* AudioItemN.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		114DE8B41CCA294D004BE152 /* AudioItemN.m in Sources */ = {isa = PBXBuildFile; fileRef = 114DE8B21CCA294D004BE152 /* AudioItemN.m */; };
 		11502F5F1CD4E58100365412 /* HCAudioUnit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 11502F5E1CD4E58100365412 /* HCAudioUnit.podspec */; };
+		116962571CD68D5C00D1B6F9 /* dec_if.h in Headers */ = {isa = PBXBuildFile; fileRef = 116962551CD68D5C00D1B6F9 /* dec_if.h */; };
+		116962581CD68D5C00D1B6F9 /* if_rom.h in Headers */ = {isa = PBXBuildFile; fileRef = 116962561CD68D5C00D1B6F9 /* if_rom.h */; };
 		480C86E4761DCEE75AD0A1F8 /* libPods-HCAudioUnit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF1D22D7C4B88C11F93798E0 /* libPods-HCAudioUnit.a */; };
 		883F7AF8FDFF1D249356E6B9 /* libPods-HCAudioUnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F09D90FFF7F55985C4CDBD /* libPods-HCAudioUnitTests.a */; };
 /* End PBXBuildFile section */
@@ -501,6 +503,8 @@
 		114DE8B11CCA294D004BE152 /* AudioItemN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioItemN.h; sourceTree = "<group>"; };
 		114DE8B21CCA294D004BE152 /* AudioItemN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioItemN.m; sourceTree = "<group>"; };
 		11502F5E1CD4E58100365412 /* HCAudioUnit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HCAudioUnit.podspec; sourceTree = "<group>"; };
+		116962551CD68D5C00D1B6F9 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		116962561CD68D5C00D1B6F9 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
 		3945A1DE830381534B0CCB9A /* Pods-HCAudioUnit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCAudioUnit.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCAudioUnit/Pods-HCAudioUnit.release.xcconfig"; sourceTree = "<group>"; };
 		82271707DEAC28268B9DFABB /* Pods-HCAudioUnit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCAudioUnit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCAudioUnit/Pods-HCAudioUnit.debug.xcconfig"; sourceTree = "<group>"; };
 		D4F09D90FFF7F55985C4CDBD /* libPods-HCAudioUnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HCAudioUnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -891,6 +895,8 @@
 		114DE8201CC9F6D8004BE152 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				116962551CD68D5C00D1B6F9 /* dec_if.h */,
+				116962561CD68D5C00D1B6F9 /* if_rom.h */,
 				113E7EAE1CD6809A005D8D11 /* interf_dec.h */,
 				113E7EAF1CD6809A005D8D11 /* interf_enc.h */,
 				113E7EAC1CD68048005D8D11 /* lame.h */,
@@ -1069,6 +1075,7 @@
 				114DE8651CCA1A0D004BE152 /* CAXException.h in Headers */,
 				114DE7521CC9EBEC004BE152 /* AudioSoundTouchOperation.h in Headers */,
 				114DE7901CC9EBEC004BE152 /* EZOutput.h in Headers */,
+				116962581CD68D5C00D1B6F9 /* if_rom.h in Headers */,
 				114DE76D1CC9EBEC004BE152 /* TDStretch.h in Headers */,
 				114DE7551CC9EBEC004BE152 /* WaveHeader.h in Headers */,
 				114DE85B1CCA1A0D004BE152 /* CACFDictionary.h in Headers */,
@@ -1102,6 +1109,7 @@
 				114DE7F71CC9EBEC004BE152 /* TheAmazingAudioEngine-Prefix.pch in Headers */,
 				114DE75F1CC9EBEC004BE152 /* FIFOSamplePipe.h in Headers */,
 				114DE8631CCA1A0D004BE152 /* CAStreamBasicDescription.h in Headers */,
+				116962571CD68D5C00D1B6F9 /* dec_if.h in Headers */,
 				114DE8791CCA1A63004BE152 /* amrFileCodec.h in Headers */,
 				114DE7721CC9EBEC004BE152 /* AUSAudioUnitGraph.h in Headers */,
 				114DE8AB1CCA24EA004BE152 /* SYWaveformPlayerView.h in Headers */,
