@@ -226,9 +226,9 @@
 		114DE87C1CCA1A63004BE152 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 114DE86C1CCA1A63004BE152 /* wav.mm */; };
 		114DE8811CCA1A63004BE152 /* AudioEncodeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE8751CCA1A63004BE152 /* AudioEncodeOperation.h */; };
 		114DE8821CCA1A63004BE152 /* AudioEncodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 114DE8761CCA1A63004BE152 /* AudioEncodeOperation.m */; };
-		114DE8871CCA1B2C004BE152 /* libmp3lame.a1 in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE8841CCA1B2C004BE152 /* libmp3lame.a1 */; };
-		114DE8881CCA1B2C004BE152 /* libopencore-amrnb.a1 in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE8851CCA1B2C004BE152 /* libopencore-amrnb.a1 */; };
-		114DE8891CCA1B2C004BE152 /* libopencore-amrwb.a1 in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE8861CCA1B2C004BE152 /* libopencore-amrwb.a1 */; };
+		114DE8871CCA1B2C004BE152 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE8841CCA1B2C004BE152 /* libmp3lame.a */; };
+		114DE8881CCA1B2C004BE152 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE8851CCA1B2C004BE152 /* libopencore-amrnb.a */; };
+		114DE8891CCA1B2C004BE152 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE8861CCA1B2C004BE152 /* libopencore-amrwb.a */; };
 		114DE8A41CCA24EA004BE152 /* EZWaveFormPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE89B1CCA24EA004BE152 /* EZWaveFormPlayerView.h */; };
 		114DE8A51CCA24EA004BE152 /* EZWaveFormPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 114DE89C1CCA24EA004BE152 /* EZWaveFormPlayerView.m */; };
 		114DE8A61CCA24EA004BE152 /* EZWaveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 114DE89D1CCA24EA004BE152 /* EZWaveView.xib */; };
@@ -484,9 +484,9 @@
 		114DE86C1CCA1A63004BE152 /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
 		114DE8751CCA1A63004BE152 /* AudioEncodeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEncodeOperation.h; sourceTree = "<group>"; };
 		114DE8761CCA1A63004BE152 /* AudioEncodeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioEncodeOperation.m; sourceTree = "<group>"; };
-		114DE8841CCA1B2C004BE152 /* libmp3lame.a1 */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a1; sourceTree = "<group>"; };
-		114DE8851CCA1B2C004BE152 /* libopencore-amrnb.a1 */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a1"; sourceTree = "<group>"; };
-		114DE8861CCA1B2C004BE152 /* libopencore-amrwb.a1 */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a1"; sourceTree = "<group>"; };
+		114DE8841CCA1B2C004BE152 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		114DE8851CCA1B2C004BE152 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		114DE8861CCA1B2C004BE152 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
 		114DE89B1CCA24EA004BE152 /* EZWaveFormPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EZWaveFormPlayerView.h; sourceTree = "<group>"; };
 		114DE89C1CCA24EA004BE152 /* EZWaveFormPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EZWaveFormPlayerView.m; sourceTree = "<group>"; };
 		114DE89D1CCA24EA004BE152 /* EZWaveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZWaveView.xib; sourceTree = "<group>"; };
@@ -514,9 +514,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				114DE8871CCA1B2C004BE152 /* libmp3lame.a1 in Frameworks */,
-				114DE8881CCA1B2C004BE152 /* libopencore-amrnb.a1 in Frameworks */,
-				114DE8891CCA1B2C004BE152 /* libopencore-amrwb.a1 in Frameworks */,
+				114DE8871CCA1B2C004BE152 /* libmp3lame.a in Frameworks */,
+				114DE8881CCA1B2C004BE152 /* libopencore-amrnb.a in Frameworks */,
+				114DE8891CCA1B2C004BE152 /* libopencore-amrwb.a in Frameworks */,
 				114DE8421CCA11D0004BE152 /* OpenGLES.framework in Frameworks */,
 				114DE8111CC9EC0F004BE152 /* AVFoundation.framework in Frameworks */,
 				114DE8361CC9F96E004BE152 /* Accelerate.framework in Frameworks */,
@@ -894,9 +894,9 @@
 				113E7EAE1CD6809A005D8D11 /* interf_dec.h */,
 				113E7EAF1CD6809A005D8D11 /* interf_enc.h */,
 				113E7EAC1CD68048005D8D11 /* lame.h */,
-				114DE8841CCA1B2C004BE152 /* libmp3lame.a1 */,
-				114DE8851CCA1B2C004BE152 /* libopencore-amrnb.a1 */,
-				114DE8861CCA1B2C004BE152 /* libopencore-amrwb.a1 */,
+				114DE8841CCA1B2C004BE152 /* libmp3lame.a */,
+				114DE8851CCA1B2C004BE152 /* libopencore-amrnb.a */,
+				114DE8861CCA1B2C004BE152 /* libopencore-amrwb.a */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
