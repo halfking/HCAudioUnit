@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113E7EAD1CD68048005D8D11 /* lame.h in Headers */ = {isa = PBXBuildFile; fileRef = 113E7EAC1CD68048005D8D11 /* lame.h */; };
+		113E7EB01CD6809A005D8D11 /* interf_dec.h in Headers */ = {isa = PBXBuildFile; fileRef = 113E7EAE1CD6809A005D8D11 /* interf_dec.h */; };
+		113E7EB11CD6809A005D8D11 /* interf_enc.h in Headers */ = {isa = PBXBuildFile; fileRef = 113E7EAF1CD6809A005D8D11 /* interf_enc.h */; };
 		114DE6231CC9EBC4004BE152 /* HCAudioUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE6221CC9EBC4004BE152 /* HCAudioUnit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		114DE62A1CC9EBC4004BE152 /* HCAudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE61F1CC9EBC4004BE152 /* HCAudioUnit.framework */; };
 		114DE62F1CC9EBC4004BE152 /* HCAudioUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 114DE62E1CC9EBC4004BE152 /* HCAudioUnitTests.m */; };
@@ -221,13 +224,8 @@
 		114DE87A1CCA1A63004BE152 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 114DE86A1CCA1A63004BE152 /* amrFileCodec.mm */; };
 		114DE87B1CCA1A63004BE152 /* wav.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE86B1CCA1A63004BE152 /* wav.h */; };
 		114DE87C1CCA1A63004BE152 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 114DE86C1CCA1A63004BE152 /* wav.mm */; };
-		114DE87D1CCA1A63004BE152 /* interf_dec.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE86F1CCA1A63004BE152 /* interf_dec.h */; };
-		114DE87E1CCA1A63004BE152 /* interf_enc.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE8701CCA1A63004BE152 /* interf_enc.h */; };
-		114DE87F1CCA1A63004BE152 /* dec_if.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE8721CCA1A63004BE152 /* dec_if.h */; };
-		114DE8801CCA1A63004BE152 /* if_rom.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE8731CCA1A63004BE152 /* if_rom.h */; };
 		114DE8811CCA1A63004BE152 /* AudioEncodeOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE8751CCA1A63004BE152 /* AudioEncodeOperation.h */; };
 		114DE8821CCA1A63004BE152 /* AudioEncodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 114DE8761CCA1A63004BE152 /* AudioEncodeOperation.m */; };
-		114DE8831CCA1A63004BE152 /* lame.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE8781CCA1A63004BE152 /* lame.h */; };
 		114DE8871CCA1B2C004BE152 /* libmp3lame.a1 in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE8841CCA1B2C004BE152 /* libmp3lame.a1 */; };
 		114DE8881CCA1B2C004BE152 /* libopencore-amrnb.a1 in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE8851CCA1B2C004BE152 /* libopencore-amrnb.a1 */; };
 		114DE8891CCA1B2C004BE152 /* libopencore-amrwb.a1 in Frameworks */ = {isa = PBXBuildFile; fileRef = 114DE8861CCA1B2C004BE152 /* libopencore-amrwb.a1 */; };
@@ -260,6 +258,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		113E7EAC1CD68048005D8D11 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		113E7EAE1CD6809A005D8D11 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		113E7EAF1CD6809A005D8D11 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
 		114DE61F1CC9EBC4004BE152 /* HCAudioUnit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HCAudioUnit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		114DE6221CC9EBC4004BE152 /* HCAudioUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCAudioUnit.h; sourceTree = "<group>"; };
 		114DE6241CC9EBC4004BE152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -481,13 +482,8 @@
 		114DE86A1CCA1A63004BE152 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
 		114DE86B1CCA1A63004BE152 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
 		114DE86C1CCA1A63004BE152 /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
-		114DE86F1CCA1A63004BE152 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
-		114DE8701CCA1A63004BE152 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
-		114DE8721CCA1A63004BE152 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
-		114DE8731CCA1A63004BE152 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
 		114DE8751CCA1A63004BE152 /* AudioEncodeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEncodeOperation.h; sourceTree = "<group>"; };
 		114DE8761CCA1A63004BE152 /* AudioEncodeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioEncodeOperation.m; sourceTree = "<group>"; };
-		114DE8781CCA1A63004BE152 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		114DE8841CCA1B2C004BE152 /* libmp3lame.a1 */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a1; sourceTree = "<group>"; };
 		114DE8851CCA1B2C004BE152 /* libopencore-amrnb.a1 */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a1"; sourceTree = "<group>"; };
 		114DE8861CCA1B2C004BE152 /* libopencore-amrwb.a1 */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a1"; sourceTree = "<group>"; };
@@ -895,6 +891,9 @@
 		114DE8201CC9F6D8004BE152 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				113E7EAE1CD6809A005D8D11 /* interf_dec.h */,
+				113E7EAF1CD6809A005D8D11 /* interf_enc.h */,
+				113E7EAC1CD68048005D8D11 /* lame.h */,
 				114DE8841CCA1B2C004BE152 /* libmp3lame.a1 */,
 				114DE8851CCA1B2C004BE152 /* libopencore-amrnb.a1 */,
 				114DE8861CCA1B2C004BE152 /* libopencore-amrwb.a1 */,
@@ -936,8 +935,6 @@
 			children = (
 				114DE8681CCA1A63004BE152 /* amrwapper */,
 				114DE86D1CCA1A63004BE152 /* lib */,
-				114DE86E1CCA1A63004BE152 /* opencore-amrnb */,
-				114DE8711CCA1A63004BE152 /* opencore-amrwb */,
 			);
 			path = AudioToAmr;
 			sourceTree = "<group>";
@@ -960,40 +957,13 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
-		114DE86E1CCA1A63004BE152 /* opencore-amrnb */ = {
-			isa = PBXGroup;
-			children = (
-				114DE86F1CCA1A63004BE152 /* interf_dec.h */,
-				114DE8701CCA1A63004BE152 /* interf_enc.h */,
-			);
-			path = "opencore-amrnb";
-			sourceTree = "<group>";
-		};
-		114DE8711CCA1A63004BE152 /* opencore-amrwb */ = {
-			isa = PBXGroup;
-			children = (
-				114DE8721CCA1A63004BE152 /* dec_if.h */,
-				114DE8731CCA1A63004BE152 /* if_rom.h */,
-			);
-			path = "opencore-amrwb";
-			sourceTree = "<group>";
-		};
 		114DE8741CCA1A63004BE152 /* AudioToMp3 */ = {
 			isa = PBXGroup;
 			children = (
 				114DE8751CCA1A63004BE152 /* AudioEncodeOperation.h */,
 				114DE8761CCA1A63004BE152 /* AudioEncodeOperation.m */,
-				114DE8771CCA1A63004BE152 /* lame */,
 			);
 			path = AudioToMp3;
-			sourceTree = "<group>";
-		};
-		114DE8771CCA1A63004BE152 /* lame */ = {
-			isa = PBXGroup;
-			children = (
-				114DE8781CCA1A63004BE152 /* lame.h */,
-			);
-			path = lame;
 			sourceTree = "<group>";
 		};
 		114DE89A1CCA24EA004BE152 /* wavform */ = {
@@ -1050,6 +1020,7 @@
 				114DE79F1CC9EBEC004BE152 /* AEAudioController(offline).h in Headers */,
 				114DE7E41CC9EBEC004BE152 /* AELowPassFilter.h in Headers */,
 				114DE7DC1CC9EBEC004BE152 /* AEDistortionFilter.h in Headers */,
+				113E7EB11CD6809A005D8D11 /* interf_enc.h in Headers */,
 				114DE7EE1CC9EBEC004BE152 /* AEReverbFilter.h in Headers */,
 				114DE7A81CC9EBEC004BE152 /* AEAudioFilePlayer.h in Headers */,
 				114DE7BE1CC9EBEC004BE152 /* AEMessageQueue.h in Headers */,
@@ -1060,6 +1031,7 @@
 				114DE7BC1CC9EBEC004BE152 /* AEMemoryBufferPlayer.h in Headers */,
 				114DE76E1CC9EBEC004BE152 /* AudioHelper.h in Headers */,
 				114DE7C61CC9EBEC004BE152 /* AEExpanderFilter.h in Headers */,
+				113E7EB01CD6809A005D8D11 /* interf_dec.h in Headers */,
 				114DE8B31CCA294D004BE152 /* AudioItemN.h in Headers */,
 				114DE7F81CC9EBEC004BE152 /* TheAmazingAudioEngine.h in Headers */,
 				114DE7E81CC9EBEC004BE152 /* AENewTimePitchFilter.h in Headers */,
@@ -1092,7 +1064,6 @@
 				114DE7941CC9EBEC004BE152 /* EZRecorder.h in Headers */,
 				114DE78C1CC9EBEC004BE152 /* EZAudioUtilities.h in Headers */,
 				114DE77A1CC9EBEC004BE152 /* EZAudioDisplayLink.h in Headers */,
-				114DE87E1CCA1A63004BE152 /* interf_enc.h in Headers */,
 				114DE7921CC9EBEC004BE152 /* EZPlot.h in Headers */,
 				114DE7461CC9EBEC004BE152 /* AudioDefine.h in Headers */,
 				114DE8651CCA1A0D004BE152 /* CAXException.h in Headers */,
@@ -1105,7 +1076,7 @@
 				114DE78E1CC9EBEC004BE152 /* EZMicrophone.h in Headers */,
 				114DE7611CC9EBEC004BE152 /* FIRFilter.h in Headers */,
 				114DE7821CC9EBEC004BE152 /* EZAudioFloatData.h in Headers */,
-				114DE8801CCA1A63004BE152 /* if_rom.h in Headers */,
+				113E7EAD1CD68048005D8D11 /* lame.h in Headers */,
 				114DE8A91CCA24EA004BE152 /* SCWaveformView.h in Headers */,
 				114DE7CC1CC9EBEC004BE152 /* AEMixerBuffer.h in Headers */,
 				114DE8811CCA1A63004BE152 /* AudioEncodeOperation.h in Headers */,
@@ -1137,7 +1108,6 @@
 				114DE7781CC9EBEC004BE152 /* EZAudioDevice.h in Headers */,
 				114DE7F61CC9EBEC004BE152 /* TPCircularBuffer.h in Headers */,
 				114DE87B1CCA1A63004BE152 /* wav.h in Headers */,
-				114DE87F1CCA1A63004BE152 /* dec_if.h in Headers */,
 				114DE7681CC9EBEC004BE152 /* SoundTouch.h in Headers */,
 				114DE7701CC9EBEC004BE152 /* AUSAudioFileReader.h in Headers */,
 				114DE7DA1CC9EBEC004BE152 /* AEDelayFilter.h in Headers */,
@@ -1148,9 +1118,7 @@
 				114DE7F41CC9EBEC004BE152 /* TPCircularBuffer+AudioBufferList.h in Headers */,
 				114DE8601CCA1A0D004BE152 /* CADebugPrintf.h in Headers */,
 				114DE7581CC9EBEC004BE152 /* AAFilter.h in Headers */,
-				114DE8831CCA1A63004BE152 /* lame.h in Headers */,
 				114DE7741CC9EBEC004BE152 /* AEFloatConverterEZ.h in Headers */,
-				114DE87D1CCA1A63004BE152 /* interf_dec.h in Headers */,
 				114DE7F01CC9EBEC004BE152 /* AEVarispeedFilter.h in Headers */,
 				114DE76B1CC9EBEC004BE152 /* STTypes.h in Headers */,
 				114DE79B1CC9EBEC004BE152 /* testAudioViewController.h in Headers */,
