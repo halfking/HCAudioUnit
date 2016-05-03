@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HCAudioUnit"
-  s.version      = "0.0.4"
+  s.version      = "0.1.1"
   s.summary      = "这是一个与声音相关核心库。"
   s.description  = <<-DESC
 这是一个特定的核心库。包含了常用录音、及声音滤镜相关的功能。
@@ -52,7 +52,7 @@ s.pod_target_xcconfig = { 'LIBRARY_SEARCH_PATHS' => "$(inherited) /Users/huangxu
 # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
 
 s.dependency "HCMinizip", "~> 1.2.6"
-s.dependency "hccoren", "~> 0.1.5"
+s.dependency "hccoren", "~> 0.1.7"
 
 s.subspec 'lame' do |spec|
     spec.source_files = ['Lib/*.h']
