@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HCAudioUnit"
-  s.version      = "0.1.4"
+  s.version      = "0.1.5"
   s.summary      = "这是一个与声音相关核心库。"
   s.description  = <<-DESC
 这是一个特定的核心库。包含了常用录音、及声音滤镜相关的功能。
