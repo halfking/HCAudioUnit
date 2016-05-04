@@ -5,11 +5,11 @@
 
 target 'HCAudioUnit' do
 	pod 'HCMinizip'
-	pod 'hccoren','~> 0.1.5'
+	pod 'hccoren','~> 0.2.0'
 end
 
 target 'HCAudioUnitTests' do
 	pod 'HCMinizip'
-	pod 'hccoren','~> 0.1.5'
+	pod 'hccoren','~> 0.2.0'
 end
 
