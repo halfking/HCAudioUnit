@@ -22,14 +22,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     barView_ = [[AudioBarGraphWaveView alloc]initWithFrame:CGRectMake(10, 50, self.view.frame.size.width -20, 50)];
     [self.view addSubview:barView_];
-    
+     NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"黄昏里" ofType:@"mp3"];
     NSString * filePath = [[NSBundle mainBundle]pathForResource:@"北京北京" ofType:@"mp3"];
     [barView_ setSoundURL:[NSURL fileURLWithPath:filePath]];
     
 //    AudioBarGraphWaveView * view2 = [[AudioBarGraphWaveView alloc]initWithFrame:CGRectMake(10, 150, self.view.frame.size.width -20, 50)];
 //    [self.view addSubview:view2];
 //    
-    NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"黄昏里" ofType:@"mp3"];
+//    NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"黄昏里" ofType:@"mp3"];
 //    [barView_ setSoundURL:[NSURL fileURLWithPath:filePath2]];
     
     SCWaveformView * view3 = [[SCWaveformView alloc]initWithFrame:CGRectMake(10, 250, self.view.frame.size.width -20, 50)];

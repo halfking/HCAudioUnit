@@ -108,6 +108,12 @@
         });
     }
 }
+- (CGFloat)addSamplesWithOffset:(SInt16 *)samples count:(SInt16)count
+{
+    return 0;
+}
+#pragma mark - render
+
 - (void) render {
     
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:_soundURL options:nil];
@@ -343,11 +349,11 @@
     
 //    CGColorRef waveColor = color.CGColor;
     if(_drawSpace>=4)
-        CGContextSetLineWidth(context, _drawSpace - 2);
-    else
         CGContextSetLineWidth(context, _drawSpace - 1);
+    else
+        CGContextSetLineWidth(context, _drawSpace - 0.5);
     
-    CGFloat space = Y *0.1*0.1;
+    CGFloat space = MAX(Y *0.1*0.05,0.5);
     for (int i = 0; i < sampleCount; i ++ ) {
         Float32 val = *samples ++ ;
         Float32 totalVal = val;
