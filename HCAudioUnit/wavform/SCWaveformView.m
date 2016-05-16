@@ -35,7 +35,15 @@
 @end
 
 @implementation SCWaveformView
-
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        [self commonInit];
+    }
+    
+    return self;
+}
 - (instancetype)init {
     self = [super init];
     
@@ -220,7 +228,7 @@ void SCRenderPixelWaveformInContext(CGContextRef context, float halfGraphHeight,
             
             // Rendering the last pixels
             bigSample = bigSampleCount > 0 ? bigSample / (double)bigSampleCount : noiseFloor;
-            while (currentX < size.width) {
+            while (currentX <= size.width) {
                 SCRenderPixelWaveformInContext(context, halfGraphHeight, bigSample, currentX);
                 currentX++;
             }
