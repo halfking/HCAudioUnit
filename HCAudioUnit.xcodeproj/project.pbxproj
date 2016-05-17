@@ -243,7 +243,7 @@
 		114DE8B31CCA294D004BE152 /* AudioItemN.h in Headers */ = {isa = PBXBuildFile; fileRef = 114DE8B11CCA294D004BE152 /* AudioItemN.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		114DE8B41CCA294D004BE152 /* AudioItemN.m in Sources */ = {isa = PBXBuildFile; fileRef = 114DE8B21CCA294D004BE152 /* AudioItemN.m */; };
 		11502F5F1CD4E58100365412 /* HCAudioUnit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 11502F5E1CD4E58100365412 /* HCAudioUnit.podspec */; };
-		115EE0AA1CE9BABD00768602 /* AudioBarGraphWaveView.h in Headers */ = {isa = PBXBuildFile; fileRef = 115EE0A81CE9BABD00768602 /* AudioBarGraphWaveView.h */; };
+		115EE0AA1CE9BABD00768602 /* AudioBarGraphWaveView.h in Headers */ = {isa = PBXBuildFile; fileRef = 115EE0A81CE9BABD00768602 /* AudioBarGraphWaveView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		115EE0AB1CE9BABD00768602 /* AudioBarGraphWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 115EE0A91CE9BABD00768602 /* AudioBarGraphWaveView.m */; };
 		116962571CD68D5C00D1B6F9 /* dec_if.h in Headers */ = {isa = PBXBuildFile; fileRef = 116962551CD68D5C00D1B6F9 /* dec_if.h */; };
 		116962581CD68D5C00D1B6F9 /* if_rom.h in Headers */ = {isa = PBXBuildFile; fileRef = 116962561CD68D5C00D1B6F9 /* if_rom.h */; };
@@ -1027,7 +1027,6 @@
 			files = (
 				114DE7B41CC9EBEC004BE152 /* AEBlockFilter.h in Headers */,
 				114DE7641CC9EBEC004BE152 /* PeakFinder.h in Headers */,
-				115EE0AA1CE9BABD00768602 /* AudioBarGraphWaveView.h in Headers */,
 				114DE8081CC9EBEC004BE152 /* LCVoice.h in Headers */,
 				114DE7311CC9EBEC004BE152 /* AudioCenterNew(soundtouch).h in Headers */,
 				114DE79F1CC9EBEC004BE152 /* AEAudioController(offline).h in Headers */,
@@ -1069,6 +1068,7 @@
 				114DE7D41CC9EBEC004BE152 /* AESequencerChannel.h in Headers */,
 				114DE7D01CC9EBEC004BE152 /* AERecorder.h in Headers */,
 				114DE7B01CC9EBEC004BE152 /* AEBlockAudioReceiver.h in Headers */,
+				115EE0AA1CE9BABD00768602 /* AudioBarGraphWaveView.h in Headers */,
 				114DE7301CC9EBEC004BE152 /* AudioCenterNew(offline).h in Headers */,
 				114DE7A11CC9EBEC004BE152 /* AEAudioController+Audiobus.h in Headers */,
 				114DE7A41CC9EBEC004BE152 /* AEAudioController.h in Headers */,

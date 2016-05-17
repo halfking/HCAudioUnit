@@ -20,5 +20,10 @@
 - (void) timeChanged:(CGFloat)playingSeconds;
 
 //返回添加的对像的宽度
-- (CGFloat) addSamplesWithOffset:(SInt16 *)samples count:(SInt16)count;
+- (CGFloat) addSamplesWithOffset:(SInt16 *)samples
+                           count:(SInt16)count
+                    channelCount:(int)channelCount
+                 samplesPerPixel:(NSInteger)samplesPerPixel;
+- (UIImage *)drawImageWithBuffer:(CGFloat)leftX;
+
 @end

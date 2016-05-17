@@ -23,14 +23,31 @@
     UIView * progressView_;
     
     CGFloat duration;
+    
+    //所有基础数据的缓存，可以动态添加
+    NSMutableData * sampleBuffer_;
+    long sampleCountInBuffer_;
+    //第一个汇总片段数据的统计
+    long sampleCountForSlider;
+    double sampleSliderSumForLeftChannel;
+    double sampleSliderSumForRightChannel;
+    
+    //多少个数据点汇总成一个数据片段
+    NSInteger samplesPerPixel_;
+    
 }
-
+- (NSInteger) getSamplesPerPixel
+{
+    return samplesPerPixel_;
+}
 - (id) initWithFrame:(CGRect)frame {
     
     self = [super initWithFrame:frame];
     
     if (self)
     {
+        samplesPerPixel_ = 100;
+        
         //self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
         _progressColor = [UIColor yellowColor];
         _waveColor = [UIColor blueColor];
@@ -108,9 +125,61 @@
         });
     }
 }
-- (CGFloat)addSamplesWithOffset:(SInt16 *)samples count:(SInt16)count
+- (CGFloat)addSamplesWithOffset:(SInt16 *)samples count:(SInt16)count channelCount:(int)channelCount samplesPerPixel:(NSInteger)samplesPerPixel
 {
+    if(!sampleBuffer_)
+    {
+        sampleBuffer_ =[[NSMutableData alloc]init];
+        sampleSliderSumForLeftChannel = 0;
+        sampleSliderSumForRightChannel = 0;
+        sampleCountForSlider = 0;
+        sampleCountInBuffer_ =0;
+    }
+    if(samplesPerPixel<=1) samplesPerPixel = samplesPerPixel_;
+    
+    NSUInteger sampleCount = count;
+    
+    for (int i = 0; i < sampleCount; i++)
+    {
+        Float32 sample = (Float32) *samples++;
+        if(sample>=0)
+        {
+            sample = noiseFloor;
+        }
+        else
+        {
+            sample = decibel(sample);
+            sample = minMaxX(sample, noiseFloor, 0);
+        }
+        for (int j = 1; j<channelCount; j++) {
+            samples ++;
+        }
+        if(!isnan(sample))
+        {
+            sampleSliderSumForLeftChannel += (sample);
+        }
+        sampleCountForSlider++;
+        if (sampleCountForSlider > samplesPerPixel)
+        {
+            sample = (Float32)(sampleSliderSumForLeftChannel / sampleCountForSlider);
+            
+            [sampleBuffer_ appendBytes:&sample length:sizeof(sample)];
+            sampleSliderSumForLeftChannel = 0;
+            sampleSliderSumForRightChannel = 0;
+            sampleCountForSlider = 0;
+            sampleCountInBuffer_ ++;
+        }
+    }
+    
     return 0;
+}
+- (void)resetBuffers
+{
+    sampleSliderSumForLeftChannel = 0;
+    sampleSliderSumForRightChannel = 0;
+    sampleCountForSlider = 0;
+    sampleCountInBuffer_ =0;
+    sampleBuffer_ = nil;
 }
 #pragma mark - render
 
@@ -168,19 +237,19 @@
     //    Float32 minValue = 0;
     //    Float32 maxValue = 0;
     
-    NSMutableData *fullSongData = [[NSMutableData alloc] init];
+    //    NSMutableData *fullSongData = [[NSMutableData alloc] init];
     
     [reader startReading];
     
     UInt64 totalBytes = 0;
-    double totalLeft = 0;
-    SInt64 totalRight = 0;
-    NSInteger sampleTally = 0;
+    //    double totalLeft = 0;
+    //    SInt64 totalRight = 0;
+    //    NSInteger sampleTally = 0;
     
-    NSInteger samplesPerPixel = 100; // pretty enougth for most of ui and fast
+    NSInteger samplesPerPixel = samplesPerPixel_;
     
-    int buffersCount = 0;
-    long sampleCountFull = 0;
+    //    int buffersCount = 0;
+    //    long sampleCountFull = 0;
     while (reader.status == AVAssetReaderStatusReading)
     {
         AVAssetReaderTrackOutput * trackOutput = (AVAssetReaderTrackOutput *)[reader.outputs objectAtIndex:0];
@@ -201,66 +270,46 @@
                 SInt16 * samples = (SInt16*) data.mutableBytes;
                 NSUInteger sampleCount = length / bytesPerSample;
                 
-                for (int i = 0; i < sampleCount; i++)
-                {
-                    Float32 sample = (Float32) *samples++;
-                    if(sample>=0)
-                    {
-                        sample = noiseFloor;
-                    }
-                    else
-                    {
-                        sample = decibel(sample);
-                        sample = minMaxX(sample, noiseFloor, 0);
-                    }
-                    for (int j = 1; j<channelCount; j++) {
-                        samples ++;
-                    }
-                    if(!isnan(sample))
-                    {
-                        totalLeft += (sample);
-                    }
-                    sampleTally++;
-                    if (sampleTally > samplesPerPixel)
-                    {
-                        sample = (Float32)(totalLeft / sampleTally);
-                        
-                        [fullSongData appendBytes:&sample length:sizeof(sample)];
-                        totalLeft = 0;
-                        totalRight = 0;
-                        sampleTally = 0;
-                        sampleCountFull ++;
-                    }
-                }
+                
+                [self addSamplesWithOffset:samples count:sampleCount channelCount:channelCount samplesPerPixel:samplesPerPixel];
+                
                 CMSampleBufferInvalidate(sampleBufferRef);
                 
                 CFRelease(sampleBufferRef);
             }
         }
         
-        buffersCount++;
+        //        buffersCount++;
     }
     
     if (reader.status == AVAssetReaderStatusCompleted)
     {
         
         long pointCount = (self.frame.size.width - 20) / (_drawSpace) ;
-        NSData * pointData = [self getPointsToDraw:(Float32 *)fullSongData.bytes sampleCount:sampleCountFull pointCount:&pointCount];
+        NSData * pointData = [self getPointsToDraw:(Float32 *)sampleBuffer_.bytes sampleCount:sampleCountInBuffer_ pointCount:&pointCount];
         Float32 * pointDataBytes = (Float32 *)pointData.bytes;
         
         
         UIImage *image = [self drawImageFromSamples:pointDataBytes
                                         sampleCount:pointCount
-                                              color:self.waveColor];
+                                              color:self.waveColor
+                                            leftPos:0];
         if(self.hasProgress)
         {
             waveImageViewProgress_.image = [self drawImageFromSamples:pointDataBytes
                                                           sampleCount:pointCount
-                                                                color:[UIColor yellowColor]];
+                                                                color:self.progressColor
+                                                              leftPos:0];
         }
+        
+        [self resetBuffers];
+        
         return image;
     }
-    
+    else
+    {
+        [self resetBuffers];
+    }
     return nil;
 }
 - (NSData *) getPointsToDraw:(Float32 *)samples sampleCount:(long)sampleCount pointCount:(long *)pointsCount
@@ -337,9 +386,25 @@
     }
     return pointsData;
 }
+- (UIImage *)drawImageWithBuffer:(CGFloat)leftX
+{
+#warning 此处仍有BUG，需要统筹计算，一个像素需要多少个音频信息
+    long pointCount = sampleCountInBuffer_;
+    NSData * pointData = [self getPointsToDraw:(Float32 *)sampleBuffer_.bytes sampleCount:sampleCountInBuffer_ pointCount:&pointCount];
+    Float32 * pointDataBytes = (Float32 *)pointData.bytes;
+    
+    
+    UIImage *image = [self drawImageFromSamples:pointDataBytes
+                                    sampleCount:pointCount
+                                          color:self.waveColor
+                                        leftPos:leftX];
+    
+    return image;
+}
 - (UIImage*) drawImageFromSamples:(Float32*)samples
                       sampleCount:(NSInteger)sampleCount
                             color:(UIColor *)color
+                          leftPos:(CGFloat)posX
 {
     
     CGSize imageSize = CGSizeMake(self.frame.size.width - 20, self.frame.size.height - 2);
@@ -347,7 +412,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     float Y = imageSize.height;
     
-//    CGColorRef waveColor = color.CGColor;
+    //    CGColorRef waveColor = color.CGColor;
     if(_drawSpace>=4)
         CGContextSetLineWidth(context, _drawSpace - 1);
     else
@@ -361,28 +426,9 @@
         if (totalVal <= 0 ) {
             totalVal = 0.1;
         }
-        float X = i * _drawSpace ;//+ _drawSpace / 2;
+        float X = posX + i * _drawSpace ;//+ _drawSpace / 2;
         Float32 promixatedVal = roundf(totalVal * 10)/10;
-        //
-        //        if (promixatedVal >= 0.9) {
-        //            //从下往上画，并且留出一行间隙
-        //            waveColor = [[UIColor blueColor] colorWithAlphaComponent:0.2].CGColor;
-        //            CGContextMoveToPoint(context, X, Y * 0.1);
-        //            CGContextAddLineToPoint(context, X,Y * (0.9 - promixatedVal) + Y * 0.1 * 0.1);
-        //
-        //            CGContextSetStrokeColorWithColor(context, waveColor);
-        //            CGContextStrokePath(context);
-        //
-        //            promixatedVal -= 0.1;
-        //        }
         
-        
-        
-        if(sampleCount < i +4)
-        {
-            NSLog(@"break to trace");
-        }
-
         //top
         if(totalVal - promixatedVal > 0.01)
         {
@@ -419,74 +465,6 @@
             
             promixatedVal -= 0.1;
         }
-        //        {
-        //            CGFloat alpha = 1;
-        //            CGFloat bottomPoint = Y;
-        //            CGFloat topPoint = Y * (0.95);
-        //            CGColorRef  waveColor = [color colorWithAlphaComponent:alpha].CGColor;
-        //            CGContextSetStrokeColorWithColor(context, waveColor);
-        //
-        //            CGContextMoveToPoint(context, X, bottomPoint);
-        //            CGContextAddLineToPoint(context, X, topPoint + space);
-        //
-        //            CGContextStrokePath(context);
-        //
-        //        }
-        //        if (totalVal >= 0.8)
-        //        {
-        //            waveColor = [[UIColor blueColor] colorWithAlphaComponent:0.2].CGColor;
-        //            CGContextMoveToPoint(context, X, Y * 0.2);
-        //            CGContextAddLineToPoint(context, X, Y * 0.1 + Y * 0.2 * 0.1);
-        //
-        //            CGContextSetStrokeColorWithColor(context, waveColor);
-        //            CGContextStrokePath(context);
-        //        }
-        //
-        //        if (totalVal >= 0.7) {
-        //            waveColor = [[UIColor blueColor] colorWithAlphaComponent:0.3].CGColor;
-        //            CGContextMoveToPoint(context, X, Y * 0.3);
-        //            CGContextAddLineToPoint(context, X, Y * 0.2 + Y * 0.2 * 0.1);
-        //
-        //            CGContextSetStrokeColorWithColor(context, waveColor);
-        //            CGContextStrokePath(context);
-        //        }
-        //        if (totalVal >= 0.6)
-        //        {
-        //            waveColor = [[UIColor blueColor] colorWithAlphaComponent:0.4].CGColor;
-        //            CGContextMoveToPoint(context, X, Y * 0.4);
-        //            CGContextAddLineToPoint(context, X, Y * 0.3 + Y * 0.2 * 0.1);
-        //
-        //            CGContextSetStrokeColorWithColor(context, waveColor);
-        //            CGContextStrokePath(context);
-        //        }
-        //        if (totalVal >= 0.4)
-        //        {
-        //            waveColor = [[UIColor blueColor] colorWithAlphaComponent:0.6].CGColor;
-        //            CGContextMoveToPoint(context, X, Y * 0.6);
-        //            CGContextAddLineToPoint(context, X, 0.4 * Y + Y * 0.2 * 0.1);
-        //
-        //            CGContextSetStrokeColorWithColor(context, waveColor);
-        //            CGContextStrokePath(context);
-        //
-        //        }
-        //        if (totalVal >=  0.2)
-        //        {
-        //            waveColor = [[UIColor blueColor] colorWithAlphaComponent:0.8].CGColor;
-        //            CGContextMoveToPoint(context, X, Y * 0.8);
-        //            CGContextAddLineToPoint(context, X, 0.6 * Y + Y * 0.2 * 0.1);
-        //
-        //            CGContextSetStrokeColorWithColor(context, waveColor);
-        //            CGContextStrokePath(context);
-        //
-        //        }
-        //        {
-        //            waveColor = [[UIColor blueColor] colorWithAlphaComponent:1].CGColor;
-        //            CGContextMoveToPoint(context, X, Y);
-        //            CGContextAddLineToPoint(context, X, 0.8 * Y + Y * 0.2 * 0.1);
-        //
-        //            CGContextSetStrokeColorWithColor(context, waveColor);
-        //            CGContextStrokePath(context);
-        //        }
     }
     
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();

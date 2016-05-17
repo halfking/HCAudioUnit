@@ -69,3 +69,5 @@ FOUNDATION_EXPORT const unsigned char HCAudioUnitVersionString[];
 #import <HCAudioUnit/WTAudioPlayer.h>
 #import <HCAudioUnit/WTAudioRecorder.h>
 #import <HCAudioUnit/LCVoice.h>
+
+#import <HCAudioUnit/AudioBarGraphWaveView.h>
