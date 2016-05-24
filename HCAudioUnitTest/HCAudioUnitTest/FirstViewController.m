@@ -53,6 +53,16 @@
     view3.asset = [AVURLAsset assetWithURL:[NSURL fileURLWithPath:filePath]];
     [self.view addSubview:view3];
     
+    
+    AudioBarGraphWaveView * vv2 = [[AudioBarGraphWaveView alloc]initWithFrame:CGRectMake(10, 350,  self.view.frame.size.width -20, 100)];
+    [self.view addSubview:vv2];
+    vv2.perferWidthPerBar = 6;
+    vv2.hasProgress = YES;
+    //     NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"黄昏里" ofType:@"mp3"];
+    //    NSString * filePath = [[NSBundle mainBundle]pathForResource:@"北京北京" ofType:@"mp3"];
+    [vv2 setSoundURL:[NSURL fileURLWithPath:filePath]];
+    
+    [vv2 timeChanged:30];
 //    NSString * filePath3 = [[NSBundle mainBundle]pathForResource:@"黄昏里" ofType:@"mp3"];
 //    [view3 setAudioFileUrl:[NSURL fileURLWithPath:filePath3]];
     

@@ -57,15 +57,15 @@
         _drawSpace = roundf((frame.size.width - LEFTMARGIN*2) / count + 0.5);
         
         duration = 0;
-        normalView_ = [[UIView alloc]initWithFrame:CGRectMake(10, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
+        normalView_ = [[UIView alloc]initWithFrame:CGRectMake(LEFTMARGIN, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
         normalView_.clipsToBounds = YES;
-        waveImageView_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
+        waveImageView_ = [[UIImageView alloc] initWithFrame:CGRectMake(LEFTMARGIN, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
         waveImageView_.contentMode = UIViewContentModeLeft;
         [normalView_ addSubview:waveImageView_];
         [self addSubview:normalView_];
         
-        progressView_ = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 0, self.frame.size.height)];
-        waveImageViewProgress_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
+        progressView_ = [[UIView alloc]initWithFrame:CGRectMake(LEFTMARGIN, 0, 0, self.frame.size.height)];
+        waveImageViewProgress_ = [[UIImageView alloc] initWithFrame:CGRectMake(LEFTMARGIN, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
         waveImageViewProgress_.contentMode = UIViewContentModeLeft;
         [progressView_ addSubview:waveImageViewProgress_];
         progressView_.clipsToBounds = YES;
@@ -138,7 +138,7 @@
         if(duration<=0) return;
         
         CGFloat leftMargin = playingSeconds>0?playingSeconds * (self.frame.size.width - LEFTMARGIN*2)/duration:0;
-        normalView_.frame = CGRectMake(10+leftMargin, 0, self.frame.size.width - LEFTMARGIN *2 - leftMargin, self.frame.size.height);
+        normalView_.frame = CGRectMake(LEFTMARGIN + leftMargin, 0, self.frame.size.width - LEFTMARGIN *2 - leftMargin, self.frame.size.height);
         waveImageView_.frame = CGRectMake(-leftMargin, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height);
         progressView_.frame = CGRectMake(LEFTMARGIN, 0, leftMargin, self.frame.size.height);
         //        waveImageView_.frame = CGRectMake(-leftMargin, 0, self.frame.size.width - 20, self.frame.size.height);
