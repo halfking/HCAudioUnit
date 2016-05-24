@@ -8,7 +8,7 @@
 
 #import "AudioBarGraphWaveView.h"
 #import <AVFoundation/AVFoundation.h>
-
+#define LEFTMARGIN 4
 #define absX(x) (x < 0 ? 0 - x : x)
 #define minMaxX(x, mn, mx) (x <= mn ? mn : (x >= mx ? mx : x))
 #define noiseFloor (-50.0)
@@ -46,23 +46,26 @@
     
     if (self)
     {
-        samplesPerPixel_ = 100;
+        samplesPerPixel_ = 100;//(int)(100 * 375 /frame.size.width);
         
         //self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
         _progressColor = [UIColor yellowColor];
         _waveColor = [UIColor blueColor];
-        _drawSpace = (frame.size.width - 20 ) / GraphCnt;
+        int count = GraphCnt;
+        count = (frame.size.width - LEFTMARGIN *2) / 2;
+//        count *= (frame.size.width -20) / 400;
+        _drawSpace = roundf((frame.size.width - LEFTMARGIN*2) / count + 0.5);
         //        _drawSpace = 2;
         duration = 0;
-        normalView_ = [[UIView alloc]initWithFrame:CGRectMake(10, 0, self.frame.size.width - 20, self.frame.size.height)];
+        normalView_ = [[UIView alloc]initWithFrame:CGRectMake(10, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
         normalView_.clipsToBounds = YES;
-        waveImageView_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 20, self.frame.size.height)];
+        waveImageView_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
         waveImageView_.contentMode = UIViewContentModeLeft;
         [normalView_ addSubview:waveImageView_];
         [self addSubview:normalView_];
         
         progressView_ = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 0, self.frame.size.height)];
-        waveImageViewProgress_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - 20, self.frame.size.height)];
+        waveImageViewProgress_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
         waveImageViewProgress_.contentMode = UIViewContentModeLeft;
         [progressView_ addSubview:waveImageViewProgress_];
         progressView_.clipsToBounds = YES;
@@ -91,9 +94,9 @@
 }
 - (CGFloat) secondsForPoint:(CGPoint) point
 {
-    if(point.x>=10 && point.x <= self.frame.size.width - 10)
+    if(point.x>=LEFTMARGIN && point.x <= self.frame.size.width - LEFTMARGIN)
     {
-        CGFloat seconds = (point.x - 10)/(self.frame.size.width - 20);
+        CGFloat seconds = (point.x - LEFTMARGIN)/(self.frame.size.width - LEFTMARGIN *2);
         seconds *= duration;
         return seconds;
     }
@@ -112,10 +115,10 @@
     {
         if(duration<=0) return;
         
-        CGFloat leftMargin = playingSeconds>0?playingSeconds * (self.frame.size.width - 20)/duration:0;
-        normalView_.frame = CGRectMake(10+leftMargin, 0, self.frame.size.width - 20 - leftMargin, self.frame.size.height);
-        waveImageView_.frame = CGRectMake(-leftMargin, 0, self.frame.size.width - 20, self.frame.size.height);
-        progressView_.frame = CGRectMake(10, 0, leftMargin, self.frame.size.height);
+        CGFloat leftMargin = playingSeconds>0?playingSeconds * (self.frame.size.width - LEFTMARGIN*2)/duration:0;
+        normalView_.frame = CGRectMake(10+leftMargin, 0, self.frame.size.width - LEFTMARGIN *2 - leftMargin, self.frame.size.height);
+        waveImageView_.frame = CGRectMake(-leftMargin, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height);
+        progressView_.frame = CGRectMake(LEFTMARGIN, 0, leftMargin, self.frame.size.height);
         //        waveImageView_.frame = CGRectMake(-leftMargin, 0, self.frame.size.width - 20, self.frame.size.height);
     }
     else
@@ -285,7 +288,7 @@
     if (reader.status == AVAssetReaderStatusCompleted)
     {
         
-        long pointCount = (self.frame.size.width - 20) / (_drawSpace) ;
+        long pointCount = (self.frame.size.width - LEFTMARGIN *2) / (_drawSpace) ;
         NSData * pointData = [self getPointsToDraw:(Float32 *)sampleBuffer_.bytes sampleCount:sampleCountInBuffer_ pointCount:&pointCount];
         Float32 * pointDataBytes = (Float32 *)pointData.bytes;
         
@@ -407,7 +410,7 @@
                           leftPos:(CGFloat)posX
 {
     
-    CGSize imageSize = CGSizeMake(self.frame.size.width - 20, self.frame.size.height - 2);
+    CGSize imageSize = CGSizeMake(self.frame.size.width - LEFTMARGIN *2, self.frame.size.height - 2);
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     float Y = imageSize.height;

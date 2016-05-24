@@ -20,9 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    barView_ = [[AudioBarGraphWaveView alloc]initWithFrame:CGRectMake(10, 50, self.view.frame.size.width -20, 50)];
-    [self.view addSubview:barView_];
-     NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"黄昏里" ofType:@"mp3"];
+    UIScrollView * scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(10, 50, self.view.frame.size.width - 20, 60)];
+    [self.view addSubview:scrollView];
+    scrollView.contentSize = CGSizeMake(1000, 60);
+    scrollView.backgroundColor = [UIColor grayColor];
+    
+    barView_ = [[AudioBarGraphWaveView alloc]initWithFrame:CGRectMake(10, 0, 980, 50)];
+    [scrollView addSubview:barView_];
+//     NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"黄昏里" ofType:@"mp3"];
     NSString * filePath = [[NSBundle mainBundle]pathForResource:@"北京北京" ofType:@"mp3"];
     [barView_ setSoundURL:[NSURL fileURLWithPath:filePath]];
     
@@ -31,6 +36,13 @@
 //    
 //    NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"黄昏里" ofType:@"mp3"];
 //    [barView_ setSoundURL:[NSURL fileURLWithPath:filePath2]];
+    
+    
+    AudioBarGraphWaveView * vv = [[AudioBarGraphWaveView alloc]initWithFrame:CGRectMake(10, 100,  self.view.frame.size.width -20, 50)];
+    [self.view addSubview:vv];
+    //     NSString * filePath2 = [[NSBundle mainBundle]pathForResource:@"黄昏里" ofType:@"mp3"];
+//    NSString * filePath = [[NSBundle mainBundle]pathForResource:@"北京北京" ofType:@"mp3"];
+    [vv setSoundURL:[NSURL fileURLWithPath:filePath]];
     
     SCWaveformView * view3 = [[SCWaveformView alloc]initWithFrame:CGRectMake(10, 250, self.view.frame.size.width -20, 50)];
     view3.normalColor = [UIColor blueColor];
