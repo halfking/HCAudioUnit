@@ -47,15 +47,15 @@
     if (self)
     {
         samplesPerPixel_ = 100;//(int)(100 * 375 /frame.size.width);
-        
+        self.perferWidthPerBar = 2;
         //self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
         _progressColor = [UIColor yellowColor];
         _waveColor = [UIColor blueColor];
+        
         int count = GraphCnt;
-        count = (frame.size.width - LEFTMARGIN *2) / 2;
-//        count *= (frame.size.width -20) / 400;
+        count = (frame.size.width - LEFTMARGIN *2) / _perferWidthPerBar;
         _drawSpace = roundf((frame.size.width - LEFTMARGIN*2) / count + 0.5);
-        //        _drawSpace = 2;
+        
         duration = 0;
         normalView_ = [[UIView alloc]initWithFrame:CGRectMake(10, 0, self.frame.size.width - LEFTMARGIN *2, self.frame.size.height)];
         normalView_.clipsToBounds = YES;
@@ -73,6 +73,28 @@
         [self addSubview:progressView_];
     }
     return self;
+}
+- (void)setPerferWidthPerBar:(CGFloat)perferWidthPerBar
+{
+    _perferWidthPerBar = perferWidthPerBar;
+    
+    if(self.frame.size.width>0)
+    {
+        int count = (self.frame.size.width - LEFTMARGIN *2) / _perferWidthPerBar;
+        //        count *= (frame.size.width -20) / 400;
+        _drawSpace = roundf((self.frame.size.width - LEFTMARGIN*2) / count + 0.5);
+    }
+}
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    if(self.frame.size.width>0)
+    {
+        int count = (self.frame.size.width - LEFTMARGIN *2) / _perferWidthPerBar;
+        //        count *= (frame.size.width -20) / 400;
+        _drawSpace = roundf((self.frame.size.width - LEFTMARGIN*2) / count + 0.5);
+    }
+    
 }
 - (UIImage*)recolorizeImage:(UIImage*)image withColor:(UIColor*)color
 {

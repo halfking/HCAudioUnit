@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSURL* soundURL;
 @property (nonatomic, strong) UIColor* waveColor;
 @property (nonatomic, strong) UIColor* progressColor;
+@property (nonatomic,assign) CGFloat perferWidthPerBar;
 @property (nonatomic, assign) CGFloat drawSpace;
 @property (nonatomic, assign) NSInteger upperAndlowerSpace;
 @property (nonatomic, assign) BOOL hasProgress;
