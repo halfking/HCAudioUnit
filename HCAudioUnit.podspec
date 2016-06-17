@@ -9,10 +9,11 @@
 Pod::Spec.new do |s|
 
   s.name         = "HCAudioUnit"
-  s.version      = "0.2.7"
+  s.version      = "0.2.8"
   s.summary      = "这是一个与声音相关核心库。"
   s.description  = <<-DESC
 这是一个特定的核心库。包含了常用录音、及声音滤镜相关的功能。
+0.2.8   更正在停止录音时，无法正确获取录音时长的问题。延后释放录音对像。
                    DESC
 
   s.homepage     = "https://github.com/halfking/HCAudioUnit"

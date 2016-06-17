@@ -373,8 +373,10 @@ dispatch_queue_t getAudioQueueNew()
     if(recorder_){
         [recorder_ finishRecording];
         [audioController_ removeInputReceiver:recorder_];
-        //        [self resetAudioController:audioController_];
-        recorder_ = nil;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            recorder_ = nil;
+        });
+        
         return YES;
     }
     return NO;
